@@ -1,11 +1,10 @@
-from .user import User
+from models.user import User
 
 class Penyewa(User):
-    def __init__(self, id_user, nama, email, no_hp, id_kamar):
-        super().__init__(id_user, nama, email, no_hp)
-        self.id_kamar = id_kamar
-        self.status_aktif = True
+    def __init__(self, id_user: str, nama: str, username: str, password: str, kontak_darurat: str, pekerjaan: str):
+        super().__init__(id_user, nama, username, password)
+        self.__kontak_darurat = kontak_darurat
+        self.__pekerjaan = pekerjaan
 
-    def tampilkan_profil(self):
-        # Overriding method dari parent class
-        return f"Penyewa: {self.nama} | Kamar: {self.id_kamar} | HP: {self.no_hp}"
+    def tampilkan_role(self) -> str:
+        return f"Penyewa Kos ({self.__pekerjaan})"
